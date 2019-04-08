@@ -105,7 +105,7 @@
 												while($row = $result->fetch_assoc() ): ?>
 
 													<div style="padding: 0px;">
-														<a href="listing.php?id=<?php echo $row['isbn'] ?>" class="box-link">
+														<a href="listing.php?id=<?php echo $row['isbn'] ?>" class="box-link book" data-isbn="<?php echo $row['isbn'] ?>">
 															<div class="card box-card" style="margin: 5px; width: 185px;">
 																<div class="text-center">
 																	<img src="../img/book.png" class="card-img-top" alt="..." style="width: 80px; auto; margin: 12px 22px 12px 22px;">
