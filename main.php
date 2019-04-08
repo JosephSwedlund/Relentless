@@ -18,7 +18,6 @@
     <head>
 		<title>Relentless - Library</title>
 		
-		<link rel="icon" href="../images/favicon.ico" type="image/ico">
         <link href="../css/style.css" rel="stylesheet" type="text/css" media="all" />
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
