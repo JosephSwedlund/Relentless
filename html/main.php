@@ -134,5 +134,6 @@
 				</div>
 			</div>
 		</div>
+	<script type="text/javascript" src="../js/main-handlers.js"></script>
     </body>
 </html>
