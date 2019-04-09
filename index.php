@@ -4,7 +4,7 @@
 * Database Connections
 *
 ***************************/
-$link = new mysqli("localhost:3306","root","","relentless");
+$link = new mysqli("localhost","root","","relentless");
 
 
 if ($link->connect_errno) {
