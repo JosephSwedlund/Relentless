@@ -13,17 +13,25 @@
 ?>
 
 <?php while ($row = $result->fetch_assoc()): ?>
-	<div class="card cart-item">
+	<div class="card cart-item my-3">
 		<div class="card-body">
-			<p class="float-left px-3">Title: <?php print($row['title']); ?></p>
-			<p class="float-left px-3">Author: <?php print($row['author']); ?></p>
-			<p class="float-left px-3">Copies: <?php print($row['copies']); ?></p>
-			<p  class="float-left px-3">Price:</p> <input type="text" name="price" class="px-3 price form-control-plaintext w-25" value="<?php print($row['price']); ?>" readonly />
-			<form class="form-inline float-right px-3 cart-item-removal">
-				<input type="hidden" class="form-control" name="id" value="<?php print($row['id']); ?>" />
-				<button type="submit" class="btn btn-primary">Remove</button>
-			</form>
-			<a href="view?isbn=<?php  print($row['isbn']); ?>" class="btn btn-primary float-right">View</a>
+			<div class="row">
+				<div class="col-5">
+					<a href="listing.php?isbn=<?php  print($row['isbn']); ?>" class="px-3 font-weight-bold text-dark"><?php print($row['title']); ?></a>
+					<p class="px-3 font-italic font-weight-light"><?php print($row['author']); ?></p>
+				</div>
+				<div class="col">
+					<form class="form-inline px-3 cart-item-removal float-right">
+						<input type="hidden" class="form-control" name="id" value="<?php print($row['id']); ?>" />
+						<p class="px-3 d-inline-flex">
+							<input type="text" name="$" class="form-control-plaintext float-left text-right" size="1" value="$" readonly />
+							<input type="text" name="cost" class="price form-control-plaintext float-left" size="5" value="<?php print($row['price']); ?>" readonly />
+							<span class="text-right d-inline-block align-bottom" style="padding-top: 7px;">&times<?php print($row['copies']); ?></span>
+						</p>
+						<button type="submit" class="btn btn-primary float-right">Remove</button>
+					</form>
+				</div>
+			</div>
 		</div>
 	</div>
 <?php endwhile; ?>

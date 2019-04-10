@@ -11,14 +11,15 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 
 	<!-- My CSS -->
+	<link rel="stylesheet" type="text/css" href="../css/cart.css">
 </head>
 <body>
-	<div class="clearfix"><a href="main.php" class="float-right">Return to shopping</a></div>
+	<div class="clearfix"><a href="main.php" class="float-right text-white">Return to shopping</a></div>
 	<div id="wrapper" class="container-fluid">
 		<div class="row">
 			<div id="items" class="col-9"></div>
 			<dvi class="col">
-				<div class="card">
+				<div class="card my-5">
 					<div id="checkout" class="card-body">
 						<from id="checkout-form">
 							<div class="form-group row">
