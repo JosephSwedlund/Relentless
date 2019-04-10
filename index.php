@@ -46,6 +46,7 @@ if ($link->connect_errno) {
                 $password = $_POST["password"];
                 $name = htmlentities($link->real_escape_string($name));
                 $password = htmlentities($link->real_escape_string($password));
+
                 $result = $link->query("SELECT * FROM accounts WHERE name='" . $name . "'");
                 if(!$result)
                     die ('Can\'t query users because: ' . $link->error);
@@ -53,7 +54,8 @@ if ($link->connect_errno) {
                     $row = $result->fetch_assoc();
                     if($password == $row["password"] && $password != "" && $name != ""){
                         setcookie("bloguser",$name, 0, '/');
-                        header("Location: html/main.php");
+                        setcookie("userID",$row[id], 0, '/');
+                        header("Location: html/main.php?sort=name");
                     }
                     else
                         $message = "<div class='alert alert-danger w-25 align text-center' style='position: fixed; top: 25px; left: 50%; transform: translate(-50%, 0);'>Whoops! Looks like that's an incorrect username or password.</div>";
