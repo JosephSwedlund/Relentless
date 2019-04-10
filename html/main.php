@@ -49,7 +49,7 @@
 			<div class="header-user">
 				<p class="text-black username">Welcome, <?php print $_SESSION["user"]["name"]; ?></p>
                 <a class="text-black sign-out" href="cart.php">Go to your cart</a><br/>
-				<a class="text-black sign-out" href="../index.php">Sign out</a>
+				<a class="text-black sign-out" href="../">Sign out</a>
 			</div>
 		</div>
 		
