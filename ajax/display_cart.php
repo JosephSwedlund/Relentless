@@ -2,7 +2,7 @@
 	session_start();
 
 	$link = new mysqli("localhost", "root", "", "relentless");
-	$username = $_SESSION["username"];
+	$username = $_SESSION["user"]["name"];
 	$is_wishlist = $_POST["is_wishlist"];
 
 	$result = $link->query("SELECT c.id, l.isbn, l.title, l.author, sum(l.price) AS price, count(c.id) AS copies

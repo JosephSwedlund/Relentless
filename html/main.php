@@ -1,5 +1,5 @@
 <?php
-
+	session_start();
 	$link = new mysqli("localhost","root","","relentless");
 
 	date_default_timezone_set('UTC');
@@ -33,23 +33,23 @@
 		
 		<div class="blog-header">
 			<div class="header-title">
-				<h1 class="text-white">Relentless</h1>
-				<h5 class="text-white font-italic">The most innovative bookstore in the west</h5>	
+				<h1 class="text-black">Relentless</h1>
+				<h5 class="text-black font-italic">The most innovative bookstore in the west</h5>	
 			</div>
 			<?php
-				if(!isset($_COOKIE["bloguser"])){
+				if(!isset($_SESSION["user"])){
 					?>
 					<div class="header-user">
-						<a class="text-white sign-out" href="../index.php">Please sign in</a>
+						<a class="text-black sign-out" href="../index.php">Please sign in</a>
 					</div>
 					<?php
 				}
 				else{
 			?>
 			<div class="header-user">
-				<p class="text-white username">Welcome, <?php print $_COOKIE["bloguser"]?></p>
-                <a class="text-white sign-out" href="cart.php">Go to your cart</a><br/>
-				<a class="text-white sign-out" href="../index.php">Sign out</a>
+				<p class="text-black username">Welcome, <?php print $_SESSION["user"]["name"]; ?></p>
+                <a class="text-black sign-out" href="cart.php">Go to your cart</a><br/>
+				<a class="text-black sign-out" href="../index.php">Sign out</a>
 			</div>
 		</div>
 		
@@ -80,7 +80,7 @@
 						<div class="container text-center" style="margin-left: 1.8%;">
 							<div class="row">
 								<?php
-									if(isset($_COOKIE["bloguser"])){
+									if(isset($_SESSION["user"])){
 										
 										if($sort == "new"){
 											$result = $link->query("SELECT * FROM library ORDER BY date DESC;");

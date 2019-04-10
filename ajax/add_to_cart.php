@@ -3,7 +3,7 @@
 
 	$link = new mysqli("localhost", "root", "", "relentless");
 
-	$username = $_SESSION["username"];
+	$username = $_SESSION["user"]["name"];
 
 	$isbn = $_POST["isbn"];
 	$is_wishlist = $_POST["is_wishlist"];
