@@ -1,0 +1,23 @@
+<% items.forEach((item) => { %>
+	<div class="card cart-item my-3">
+		<div class="card-body">
+			<div class="row">
+				<div class="col-5">
+					<a href="listing.php?isbn=<?php  print($row['isbn']); ?>" class="px-3 font-weight-bold text-dark"><%= item.title %></a>
+					<p class="px-3 font-italic font-weight-light"><%= item.author %></p>
+				</div>
+				<div class="col">
+					<form class="form-inline px-3 cart-item-removal float-right">
+						<input type="hidden" class="form-control" name="id" value="<%= item.id %>" />
+						<p class="px-3 d-inline-flex">
+							<input type="text" name="$" class="form-control-plaintext float-left text-right" size="1" value="$" readonly />
+							<input type="text" name="cost" class="price form-control-plaintext float-left" size="5" value="<%= item.price %>" readonly />
+							<span class="text-right d-inline-block align-bottom" style="padding-top: 7px;">&times<%= item.copies %></span>
+						</p>
+						<button type="submit" class="btn btn-primary float-right">Remove</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+<% }); %>

@@ -1,0 +1,86 @@
+<html>
+    <head>
+		<title>Relentless - Library</title>
+		
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+        <link href="/style.css" rel="stylesheet" type="text/css" media="all" />
+		
+		<script src="http://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    </head>
+    <body class="blog-page">
+		
+		<div class="blog-header">
+			<div class="header-title">
+				<h1 class="text-black">Relentless</h1>
+				<h5 class="text-black font-italic">The most innovative bookstore in the west</h5>	
+			</div>
+			<div class="header-user">
+				<p class="text-black username">Welcome, <%= name %></p>
+				<a class="text-black sign-out" href="cart.php">Go to your cart</a><br/>
+				<a class="text-black sign-out" href="/node/logout">Sign out</a>
+			</div>
+		</div>
+		
+		<div class="blog-main">
+			<div class="row">
+				<div class="card" style="width: 97%; margin-left: 1.55%;">
+					<div class="card-body">
+						<table class="table" style="margin-bottom: 0px;">
+							<tr>
+							<h3 style="float: left; padding-left: 3%;">Shop</h3>
+								<div class="dropdown" id="sort" style="float: right; padding-right: 3.5%;">
+									<button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-right: 6px;">
+										Sort
+									</button>
+									<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+										<a class="dropdown-item" href="/?sort=new">New first</a>
+										<a class="dropdown-item" href="/?sort=old">Old first</a>
+										<a class="dropdown-item" href="/?sort=name">Name &#40;A-Z&#41;</a>
+										<a class="dropdown-item" href="/?sort=name2">Name &#40;Z-A&#41;</a>
+										<a class="dropdown-item" href="/?sort=genre">Genre</a>
+										<a class="dropdown-item" href="/?sort=isbn">ISBN</a>
+                                        <a class="dropdown-item" href="/?sort=auth">Author &#40;A-Z&#41;</a>
+										<a class="dropdown-item" href="/?sort=auth2">Author &#40;Z-A&#41;</a>
+									</div>
+								</div>
+							</tr>
+						</table>
+						<div class="container text-center" style="margin-left: 1.8%;">
+							<div class="row">
+								<% books.forEach((book) => { %>
+									<div style="padding: 0px;">
+										<a href="../listing?id=<%= book.ISBN %>" class="box-link book" data-isbn="<%= book.ISBN %>">
+											<div class="card box-card" style="margin: 5px; width: 185px;">
+												<div class="text-center">
+													<img src="/book.png" class="card-img-top" alt="..." style="width: 80px; auto; margin: 12px 22px 12px 22px;">
+												</div>
+												<div style="padding: 0px; margin-top: 8px; margin-bottom: 12px; height: 100px;">
+													<strong><%= book.title %></strong>
+													<br/>
+													<%= book.author %>
+													<br/>
+													<span class="badge badge-new" style="margin-top: 5px;"><%= book.catagory %></span>
+												</div>
+											</div>
+										</a>									
+									</div>				
+								<% }); %>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<a id="to-cart" href="/node/cart" class="position-fixed m-2" style="right: 0; bottom: 0;">
+			<div class="card px-2 py-1" style="border-radius: 50%; height: 7rem; width: 7rem; " ><img src="/cart.png" class="w-75 h-75 m-auto"></div>
+		</a>
+		<a id="to-wish" href="/node/cart" class="position-fixed m-2" style="right: 0; bottom: 135px;">
+			<div class="card px-2 py-1" style="border-radius: 50%; height: 7rem; width: 7rem; " ><img src="/wishlist.png" class="w-75 h-75 m-auto"></div>
+		</a>
+	<script type="text/javascript" src="/main-handlers.js"></script>
+    </body>
+</html>

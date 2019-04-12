@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<title>Relentless - Book Listing</title>
+		
+        <link href="/style.css" rel="stylesheet" type="text/css" media="all" />
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    </head>
+
+    <body class="blog-page">
+
+    	<div class="blog-header">
+			<div class="header-title">
+				<h1><a href="../html/main.php?sort=name">Relentless</a></h1>
+				<h5>The most innovative bookstore in the west</h5>	
+			</div>
+			<div class="header-user">
+				<p>Welcome, <%= user.username %></p>
+                <a href="/node/cart">Go to your cart</a><br/>
+				<a href="/node/logout">Sign out</a>
+			</div>
+		</div>
+		<div class="container">
+			<div class='card-body'>
+				<div class='card' style='width: 100%; margin-left: 0%; padding: 15px';>
+					<div class='text-center'><img src='/book.png' class='card-img-top' alt='...' style='width: 280px; auto; margin: 12px 22px 12px 22px;'></div>
+					<div> ISBN: <%= book.ISBN %></div>
+					<div> Title: <%= book.title %></div>
+					<div> Genre: <%= book.category %></div>
+					<div> Author: <%= book.author %></div>
+					<div> Summary: <%= book.summary %></div>
+				</div>
+			</div>
+			<div class="card-body">
+				<form name="myForm" method="post" id="submitPost" action="index.php">
+					<label for="rating"><h5>Rating:</h5></label></br>
+					<input type="text" maxlength="3" size="3" name="rating"/>
+					<label for="rating">/100</label>
+					<label for="review"><h3>Review:</h3></label>
+					<textarea class="form-control" name="review" rows="10" ></textarea>
+					<input type="hidden" name="action" value="review" />
+					<input type="button" value="Submit" onclick="postReview()" />
+				</form>
+			</div>
+		</div>
+				<div class='blog-main'> <div class='card-body w-100'> <div class='card' style='width: 97%; margin-left: 1.55%; padding: 15px;'>
+					<% reviews.forEach((review) => { %>
+						<div> Reviewer: <%= review.username %></div>
+						<div> Review: <%= review.review %></div>
+						<div> Rating: <%= review.rating %></div> </br> </br>--- </br>
+					<% }); %>
+				</div>
+		<script>
+
+		  //taken and edited from ajax.php prodived by Dr Prather
+		  function postReview()
+		  {
+		    var rating = document.getElementById("submitPost").rating.value;
+		    var review = document.getElementById("submitPost").review.value;
+
+			$.post("/node/add-review", {rank:rating, reviewText:review, isbn: <%= isbn %>, action:"upload_review"})
+			.done(function(data) {
+				alert(data);
+				document.getElementById("submitPost").rating.value = "";
+				var review = document.getElementById("submitPost").review.value = "";
+			});
+		  }
+		</script>
+    </body>
+</html>
